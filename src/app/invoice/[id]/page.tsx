@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { FileDown, AlertCircle, CreditCard, Calculator } from 'lucide-react'
 import { formatCurrency } from '@/lib/formatUtils'
+import {DiscountCountdown, InfoTooltip, PropertyInfo} from "@/components/invoice/InvoiceDetails";
 
 export default function InvoiceDetailPage() {
     const params = useParams()
@@ -90,42 +91,26 @@ export default function InvoiceDetailPage() {
 
     const { property, invoice } = data
 
+    // Añadir esto nuevo
+    const today = new Date();
+    const dueDate = new Date(invoice.dueDate);
+    const daysLeft = Math.ceil((dueDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+
     return (
         <div className="container mx-auto p-4">
             <div className="max-w-3xl mx-auto space-y-6">
-                {/* Información de la propiedad */}
+                <DiscountCountdown dueDate={invoice.dueDate} />
+
                 <Card>
                     <CardHeader>
-                        <CardTitle>Información del Predio</CardTitle>
+                        <CardTitle className="flex items-center justify-between">
+                            <span>Información del Predio</span>
+                            <span className="text-sm font-normal text-gray-500">
+                                ID Predio: {property.id}
+                            </span>
+                        </CardTitle>
                     </CardHeader>
-                    <CardContent>
-                        <dl className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <dt className="text-sm font-medium text-gray-500">Propietario</dt>
-                                <dd className="mt-1">{property.owner}</dd>
-                            </div>
-                            <div>
-                                <dt className="text-sm font-medium text-gray-500">Identificación</dt>
-                                <dd className="mt-1">{property.identification}</dd>
-                            </div>
-                            <div>
-                                <dt className="text-sm font-medium text-gray-500">Dirección</dt>
-                                <dd className="mt-1">{property.address}</dd>
-                            </div>
-                            <div>
-                                <dt className="text-sm font-medium text-gray-500">Comuna</dt>
-                                <dd className="mt-1">{property.commune}</dd>
-                            </div>
-                            <div>
-                                <dt className="text-sm font-medium text-gray-500">Estrato</dt>
-                                <dd className="mt-1">{property.stratum}</dd>
-                            </div>
-                            <div>
-                                <dt className="text-sm font-medium text-gray-500">Avalúo</dt>
-                                <dd className="mt-1">{formatCurrency(property.value)}</dd>
-                            </div>
-                        </dl>
-                    </CardContent>
+                    <PropertyInfo property={property} />
                 </Card>
 
                 {/* Detalles de la factura */}
@@ -148,22 +133,38 @@ export default function InvoiceDetailPage() {
 
                             <div className="border-t pt-4">
                                 <h4 className="font-medium mb-3">Conceptos</h4>
-                                <dl className="space-y-2">
-                                    <div className="flex justify-between">
-                                        <dt className="text-gray-600">Impuesto Predial Unificado</dt>
-                                        <dd>{formatCurrency(invoice.unifiedPropertyTax)}</dd>
+                                <dl className="space-y-3">
+                                    <div className="flex justify-between items-center">
+                                        <dt className="flex items-center gap-2">
+                                            <span className="text-gray-600">Impuesto Predial Unificado</span>
+                                            <InfoTooltip
+                                                content="Impuesto que grava los bienes inmuebles ubicados en el municipio"/>
+                                        </dt>
+                                        <dd className="font-medium tabular-nums">{formatCurrency(invoice.unifiedPropertyTax)}</dd>
                                     </div>
-                                    <div className="flex justify-between">
-                                        <dt className="text-gray-600">CVC</dt>
-                                        <dd>{formatCurrency(invoice.cvc)}</dd>
+                                    <div className="flex justify-between items-center">
+                                        <dt className="flex items-center gap-2">
+                                            <span className="text-gray-600">CVC</span>
+                                            <InfoTooltip
+                                                content="Corporación Autónoma Regional del Valle del Cauca - Tasa ambiental"/>
+                                        </dt>
+                                        <dd className="tabular-nums">{formatCurrency(invoice.cvc)}</dd>
                                     </div>
-                                    <div className="flex justify-between">
-                                        <dt className="text-gray-600">Alumbrado Público</dt>
-                                        <dd>{formatCurrency(invoice.publicLighting)}</dd>
+                                    <div className="flex justify-between items-center">
+                                        <dt className="flex items-center gap-2">
+                                            <span className="text-gray-600">Alumbrado Público</span>
+                                            <InfoTooltip
+                                                content="Tarifa para el mantenimiento del sistema de alumbrado público"/>
+                                        </dt>
+                                        <dd className="tabular-nums">{formatCurrency(invoice.publicLighting)}</dd>
                                     </div>
-                                    <div className="flex justify-between">
-                                        <dt className="text-gray-600">Sobretasa Bomberos</dt>
-                                        <dd>{formatCurrency(invoice.firefightersSurcharge)}</dd>
+                                    <div className="flex justify-between items-center">
+                                        <dt className="flex items-center gap-2">
+                                            <span className="text-gray-600">Sobretasa Bomberos</span>
+                                            <InfoTooltip
+                                                content="Contribución para el funcionamiento del cuerpo de bomberos"/>
+                                        </dt>
+                                        <dd className="tabular-nums">{formatCurrency(invoice.firefightersSurcharge)}</dd>
                                     </div>
                                 </dl>
                             </div>
@@ -174,16 +175,33 @@ export default function InvoiceDetailPage() {
                                         <dt className="font-medium text-gray-700">Total</dt>
                                         <dd className="font-medium tabular-nums">{formatCurrency(invoice.totalAmount)}</dd>
                                     </div>
-                                    <div className="flex justify-between text-green-600 items-center bg-green-50 p-3 rounded-lg">
-                                        <dt className="flex items-center">
-                                            <span className="text-sm mr-1">🎉</span>
-                                            Descuento Pronto Pago
-                                        </dt>
-                                        <dd className="font-medium tabular-nums">-{formatCurrency(invoice.discountAmount)}</dd>
-                                    </div>
-                                    <div className="flex justify-between text-lg items-center bg-blue-50 p-4 rounded-lg">
-                                        <dt className="font-bold text-blue-900">Total a Pagar</dt>
-                                        <dd className="font-bold text-blue-900 text-xl tabular-nums">{formatCurrency(invoice.finalAmount)}</dd>
+
+                                    {daysLeft > 0 ? (
+                                        <div
+                                            className="flex justify-between text-green-600 items-center bg-green-50 p-3 rounded-lg">
+                                            <dt className="flex items-center">
+                                                <span className="text-sm mr-1">🎉</span>
+                                                Descuento Pronto Pago
+                                            </dt>
+                                            <dd className="font-medium tabular-nums">-{formatCurrency(invoice.discountAmount)}</dd>
+                                        </div>
+                                    ) : (
+                                        <div className="flex justify-between items-center bg-red-50 p-3 rounded-lg">
+                                            <dt className="flex items-center gap-2 text-red-600">
+                                                <AlertCircle className="h-4 w-4"/>
+                                                No aplica descuento
+                                            </dt>
+                                            <dd className="text-sm text-red-600">Fecha límite superada</dd>
+                                        </div>
+                                    )}
+
+                                    <div className={`flex justify-between text-lg items-center ${
+                                        daysLeft > 0 ? 'bg-blue-50 text-blue-900' : 'bg-gray-50 text-gray-900'
+                                    } p-4 rounded-lg`}>
+                                        <dt className="font-bold">Total a Pagar</dt>
+                                        <dd className="font-bold text-xl tabular-nums">
+                                            {formatCurrency(daysLeft > 0 ? invoice.finalAmount : invoice.totalAmount)}
+                                        </dd>
                                     </div>
                                 </dl>
                             </div>
@@ -193,7 +211,7 @@ export default function InvoiceDetailPage() {
                                     className="flex-1 bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm"
                                     onClick={() => router.push(`/payment/${invoice.id}`)}
                                 >
-                                    <CreditCard className="mr-2 h-5 w-5" />
+                                    <CreditCard className="mr-2 h-5 w-5"/>
                                     Pagar en Línea
                                 </Button>
                                 <Button
@@ -201,14 +219,14 @@ export default function InvoiceDetailPage() {
                                     className="flex-1 hover:bg-gray-50 transition-colors border-gray-300"
                                     onClick={() => router.push(`/payment/${invoice.id}/abono`)}
                                 >
-                                    <Calculator className="mr-2 h-5 w-5" />
+                                    <Calculator className="mr-2 h-5 w-5"/>
                                     Realizar Abono
                                 </Button>
                                 <Button
                                     variant="outline"
                                     className="flex-1 hover:bg-gray-50 transition-colors border-gray-300"
                                 >
-                                    <FileDown className="mr-2 h-5 w-5" />
+                                    <FileDown className="mr-2 h-5 w-5"/>
                                     Descargar PDF
                                 </Button>
                             </div>

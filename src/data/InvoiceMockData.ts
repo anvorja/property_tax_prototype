@@ -32,7 +32,7 @@ export const invoicesMockData: Invoice[] = [
         documentNumber: "17940011001300000013",
         propertyId: "0000532910",
         expeditionDate: "2025-01-13",
-        dueDate: "2025-01-31",
+        dueDate: "2025-01-14",
         unifiedPropertyTax: 6101000,
         cvc: 832000,
         publicLighting: 0,
@@ -40,7 +40,7 @@ export const invoicesMockData: Invoice[] = [
         totalAmount: 7159000,
         discountAmount: 1073850,
         finalAmount: 6085150
-    },
+    }, // usuario factura vencida
     {
         id: "000011123447",
         documentNumber: "17940011001300000014",
