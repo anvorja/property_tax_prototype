@@ -338,7 +338,7 @@
 
 
 
-// sin logos pero buena propuesta
+// //sin logos pero buena propuesta
 // import React from 'react';
 // import { Card, CardHeader, CardContent, CardTitle, CardFooter } from '@/components/ui/card';
 // import { Button } from '@/components/ui/button';
@@ -394,17 +394,17 @@
 //         <Card className="w-full max-w-xl mx-auto">
 //             <CardHeader className="flex flex-col items-center">
 //                 <Image
-//                     src="https://res.cloudinary.com/dv2xu8dwr/image/upload/v1736927378/PSE1_a1ldmo.png"
+//                     src="https://res.cloudinary.com/dv2xu8dwr/image/upload/v1736956537/PSE1_m3v2cx.png"
 //                     alt="PSE Logo"
 //                     width={160}
 //                     height={60}
 //                     className="h-16 w-auto"
 //                     priority
 //                 />
-//                 <CardTitle className="flex items-center gap-2">
-//                     <CreditCard className="h-5 w-5" />
-//                     Pago PSE
-//                 </CardTitle>
+//                 {/*<CardTitle className="flex items-center gap-2">*/}
+//                 {/*    <CreditCard className="h-5 w-5" />*/}
+//                 {/*    Pago PSE*/}
+//                 {/*</CardTitle>*/}
 //             </CardHeader>
 //             <form onSubmit={handleSubmit}>
 //                 <CardContent className="space-y-4">
@@ -578,18 +578,18 @@ export const PSEForm: React.FC<PSEFormProps> = ({
     return (
         <div className="w-full max-w-xl mx-auto">
             <Card className="shadow-lg">
-                <CardHeader className="text-center border-b pb-6">
-                    <div className="flex justify-center mb-6">
+                <CardHeader className="text-center pb-4">
+                    <div className="flex justify-center mb-4">
                         <Image
-                            src="https://res.cloudinary.com/dv2xu8dwr/image/upload/v1736927378/PSE1_a1ldmo.png"
+                            src="https://res.cloudinary.com/dv2xu8dwr/image/upload/v1736956537/PSE1_m3v2cx.png"
                             alt="PSE Logo"
-                            width={160}
-                            height={60}
-                            className="h-16 w-auto"
+                            width={280}
+                            height={105}
+                            className="h-12 w-auto"
                             priority
                         />
                     </div>
-                    <p className="text-gray-500 mt-2">Complete los datos para realizar su pago</p>
+                    {/*<p className="text-gray-500 mt-2">Complete los datos para realizar su pago</p>*/}
                 </CardHeader>
                 <form onSubmit={handleSubmit}>
                     <CardContent className="space-y-6 pt-6">
@@ -695,7 +695,7 @@ export const PSEForm: React.FC<PSEFormProps> = ({
                             </Select>
                         </div>
                     </CardContent>
-                    <CardFooter className="border-t pt-6">
+                    <CardFooter className="pt-6">
                         <Button
                             type="submit"
                             disabled={isLoading}
@@ -777,7 +777,7 @@ export const PSEForm: React.FC<PSEFormProps> = ({
 //             <CardContent className="pt-6 space-y-6">
 //                 <div className="flex flex-col items-center space-y-4">
 //                     <Image
-//                         src="https://res.cloudinary.com/dv2xu8dwr/image/upload/v1736927378/PSE1_a1ldmo.png"
+//                         src="https://res.cloudinary.com/dv2xu8dwr/image/upload/v1736956537/PSE1_m3v2cx.png"
 //                         alt="PSE Logo"
 //                         width={180}
 //                         height={70}
@@ -877,7 +877,6 @@ export const PSEForm: React.FC<PSEFormProps> = ({
 //                             </Select>
 //                         </div>
 //                     </div>
-//
 //                     <Button
 //                         type="submit"
 //                         disabled={isLoading}

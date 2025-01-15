@@ -21,23 +21,18 @@ export default function InvoiceDetailPage() {
 
     useEffect(() => {
         let isSubscribed = true;
-        console.log('🔄 Efecto iniciado - ID de factura:', params.id);
 
         // IIFE (Immediately Invoked Function Expression)
         void (async () => {
             try {
-                console.log('⏳ Iniciando búsqueda de factura...');
                 setLoading(true);
 
                 const result = await InvoiceService.searchInvoice('NUMERO_FACTURA', params.id as string);
-                console.log('📄 Resultado de búsqueda:', result);
 
                 if (isSubscribed) {
                     if (result) {
-                        console.log('✅ Datos encontrados, actualizando estado...');
                         setData(result);
                     } else {
-                        console.log('❌ No se encontró la factura');
                         setError('Factura no encontrada');
                     }
                 } else {
@@ -50,14 +45,12 @@ export default function InvoiceDetailPage() {
                 }
             } finally {
                 if (isSubscribed) {
-                    console.log('🏁 Finalizando carga...');
                     setLoading(false);
                 }
             }
         })();
 
         return () => {
-            console.log('🧹 Limpieza ejecutada - isSubscribed establecido a false');
             isSubscribed = false;
         };
     }, [params.id]);

@@ -73,7 +73,7 @@ export const propertiesMockData: Property[] = [
         stratum: 4
     },
     {
-        id: "00004532910",
+        id: "00004532920",
         propertyNumber: "760010100179400110013000000045",
         owner: "MARIO MEDINA ROJAS",
         identification: "3121019844",
@@ -84,13 +84,13 @@ export const propertiesMockData: Property[] = [
         stratum: 4
     },
     {
-        id: "0000532912",
+        id: "00004532930",
         propertyNumber: "760010100179400110013000000046",
-        owner: "JESUS READY GOMEZ",
+        owner: "LUCRECIA READY GOMEZ",
         identification: "3121019844",
         address: "Cll 9 # 66 A - 12",
-        postalCode: "780013",
-        value: 1012931000,
+        postalCode: "780024",
+        value: 5012931000,
         commune: "8",
         stratum: 2
     },
@@ -113,9 +113,9 @@ export const invoicesMockData: Invoice[] = [
         status: 'pending' // Pendiente de pago
     },
     {
-        id: "000011123447",
+        id: "000011123448",
         documentNumber: "17940011001300000014",
-        propertyId: "00004532910",
+        propertyId: "00004532920",
         expeditionDate: "2025-01-13",
         dueDate: "2025-01-31",
         unifiedPropertyTax: 6101000,
@@ -128,9 +128,9 @@ export const invoicesMockData: Invoice[] = [
         status: 'pending'
     },
     {
-        id: "000011123448",
+        id: "000011123450",
         documentNumber: "17940011001300000015",
-        propertyId: "0000532912",
+        propertyId: "00004532930",
         expeditionDate: "2025-01-13",
         dueDate: "2025-01-31",
         unifiedPropertyTax: 5101000,
