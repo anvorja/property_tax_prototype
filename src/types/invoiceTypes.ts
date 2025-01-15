@@ -30,4 +30,20 @@ export interface Invoice {
     totalAmount: number;
     discountAmount: number;
     finalAmount: number;
+    status: 'pending' | 'paid' | 'cancelled';
+    paymentDate?: string;
+    transactionId?: string;
+}
+
+// Tipos de ayuda para estados
+export type InvoiceStatus = 'pending' | 'paid' | 'cancelled';
+
+export interface PaidInvoiceDetails {
+    paymentDate: string;
+    transactionId: string;
+}
+
+export interface InvoiceSearchResult {
+    invoice: Invoice;
+    property: Property;
 }
