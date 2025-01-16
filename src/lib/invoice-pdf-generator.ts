@@ -1,4 +1,4 @@
-// // src/lib/invoice-pdf-generator.ts
+// // src/lib/invoice-payment-pdf-generator.ts
 // import { Invoice, Property } from '@/types/invoiceTypes';
 // import jsPDF from "jspdf";
 // import { formatCurrency } from './formatUtils';
@@ -146,7 +146,7 @@
 //     return pdf;
 // };
 
-// // src/lib/invoice-pdf-generator.ts
+// // src/lib/invoice-payment-pdf-generator.ts
 // import { Invoice, Property } from '@/types/invoiceTypes';
 // import jsPDF from "jspdf";
 // import { formatCurrency } from './formatUtils';
@@ -294,7 +294,7 @@
 //     return pdf;
 // };
 
-// src/lib/invoice-pdf-generator.ts
+// src/lib/invoice-payment-pdf-generator.ts
 import { Invoice, Property } from '@/types/invoiceTypes';
 import jsPDF from "jspdf";
 import { formatCurrency } from './formatUtils';

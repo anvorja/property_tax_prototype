@@ -104,12 +104,12 @@ export const invoicesMockData: Invoice[] = [
         expeditionDate: "2025-01-13",
         dueDate: "2025-01-14",
         unifiedPropertyTax: 8000000,
-        cvc: 832000,
+        cvc: 100000,
         publicLighting: 20000,
-        firefightersSurcharge: 226000,
-        totalAmount: 7159000,
-        discountAmount: 1073850,
-        finalAmount: 6085150,
+        firefightersSurcharge: 30000,
+        totalAmount: 8150000,
+        discountAmount: 1000000,
+        finalAmount: 7150000,
         status: 'pending' // Pendiente de pago
     },
     {
