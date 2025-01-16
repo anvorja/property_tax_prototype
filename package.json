@@ -1,0 +1,42 @@
+{
+  "name": "predial_tax_prototype",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo '🔍 HOLA, ANTES DE COMPILAR VERIFIQUEMOS SINTAXIS' && pnpm run lint && echo '🏗️ VERIFICA QUE CONSTRUYA BIEN' && pnpm run build && pnpm run clean && next dev",
+    "build": "tsc -b && next build && echo '🎉 NO HUBO ERRORES 🎉'",
+    "start": "next start",
+    "lint": "next lint && echo '👩🏽‍💻 SINTAXIS OKAY 🧑‍💻'",
+    "clean": "rm -rf .next *.tsbuildinfo && echo '🧹 ARCHIVOS LIMPIOS 🧹'"
+  },
+  "dependencies": {
+    "@radix-ui/react-dropdown-menu": "^2.1.4",
+    "@radix-ui/react-progress": "^1.1.1",
+    "@radix-ui/react-select": "^2.1.4",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@radix-ui/react-toast": "^1.2.4",
+    "@radix-ui/react-tooltip": "^1.1.6",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4",
+    "lucide-react": "^0.471.1",
+    "next": "15.1.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "packageManager": "pnpm@9.15.3+sha512.1f79bc245a66eb0b07c5d4d83131240774642caaa86ef7d0434ab47c0d16f66b04e21e0c086eb61e62c77efc4d7f7ec071afad3796af64892fae66509173893a"
+}
