@@ -8,7 +8,7 @@
 [![Lucide Icons](https://img.shields.io/badge/Lucide-0.471.1-purple.svg)](https://lucide.dev/)
 [![jsPDF](https://img.shields.io/badge/jsPDF-2.5+-red.svg)](https://github.com/parallax/jsPDF)
 
-Portal web moderno para la consulta y pago de impuestos prediales de la Gobernación del Tolima, ofreciendo una experiencia fluida y segura para los ciudadanos.
+Portal web moderno para la consulta y pago de impuestos prediales de la Gobernación, ofreciendo una experiencia fluida y segura para los ciudadanos.
 
 ## ✨ Características Principales
 
